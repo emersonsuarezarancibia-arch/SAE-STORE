@@ -1,0 +1,144 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000000;
+    color: #f5f5f7;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0c;
+}
+::-webkit-scrollbar-thumb {
+    background: #2c2c30;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #44444c;
+}
+
+/* Efectos Glassmorphism */
+.glass-nav {
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-card {
+    background: rgba(22, 22, 24, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.1);
+}
+
+/* Texto Degradado */
+.gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* EFECTO DE AURA ANIMADA DE DESCUENTO */
+.discount-aura {
+    position: relative;
+}
+.discount-aura::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(45deg, #ff0055, #ffb700, #00e5ff, #7000ff);
+    background-size: 300% 300%;
+    border-radius: 1.6rem;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.85;
+    animation: auraPulse 3.5s ease infinite alternate;
+}
+@keyframes auraPulse {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 1;
+        filter: blur(14px);
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+    }
+}
+
+/* EFECTO DE AURA ROJA PARA PRODUCTO VENDIDO */
+.sold-aura {
+    position: relative;
+}
+.sold-aura::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(45deg, #ff0000, #990000, #ff4d4d, #660000);
+    background-size: 300% 300%;
+    border-radius: 1.6rem;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.85;
+    animation: auraRedPulse 3s ease infinite alternate;
+}
+@keyframes auraRedPulse {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 1;
+        filter: blur(14px);
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+    }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ANIMACIÓN DE DESPLIEGUE PROGRESIVO EN SCROLL */
+.title-unfold {
+    opacity: 0;
+    transform: translateY(40px) scale(0.88) rotateX(-25deg);
+    filter: blur(12px);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease, filter 0.9s ease;
+    will-change: transform, opacity, filter;
+    perspective: 1000px;
+}
+.title-unfold.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+}
+
+/* FONDO MARCA DE AGUA APPLE */
+.apple-watermark-bg {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 170" fill="rgba(255,255,255,0.035)"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.33.13-9.13-1.9-14.4-6.08-3.32-2.73-7.27-7.44-11.87-14.13-6.09-8.83-10.97-18.72-14.65-29.66-3.68-10.94-5.52-21.46-5.52-31.56 0-14.28 3.57-25.96 10.72-35.04 7.15-9.08 16.14-13.68 26.97-13.81 4.5 0 9.53 1.12 15.08 3.36 5.56 2.24 9.38 3.36 11.47 3.36 1.8 0 5.75-1.18 11.86-3.54 6.11-2.36 11.12-3.42 15.03-3.18 12.01.96 21.28 5.68 27.81 14.16-10.71 6.53-15.96 15.54-15.75 27.03.21 8.94 3.62 16.32 10.23 22.14 6.61 5.82 14.54 9.07 23.79 9.75-2.58 7.73-5.99 15.19-10.23 22.38zM119.22 31.84c0-6.93 2.5-13.43 7.51-19.5 5.01-6.07 11.45-10.01 19.32-11.84.21.96.32 1.88.32 2.76 0 6.83-2.56 13.33-7.68 19.5-5.12 6.17-11.53 10.03-19.23 11.58-.07-.72-.24-1.55-.24-2.5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
